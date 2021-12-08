@@ -31,26 +31,27 @@ def commonPhrases():
         line_file2 = re.sub('\s+', ' ', line_file2)
 
         sp_file1 = re.split('\*|\.|\?|\!',line_file1)
-        sp_file2 = re.split(' \*|\.|\?|\!',line_file2)
+        sp_file2 = re.split('\*|\.|\?|\!',line_file2)
         sp_file2_nospace = []
         sp_file2_nopunctuation = []
         for sentence in sp_file2:
                 sp_file2_nospace.append(sentence.replace(" ", "").upper())
                 sp_file2_nopunctuation.append(eliminate_punctuation(sentence).upper())
 
-        print("Propozitii comune(caz1)\n")
+        print("Propozitii comune(caz 1):\n")
         index= 1
+        #print(sp_file1)
         for sentence in sp_file1:
                 aux = sentence.replace(" ","").upper()
-                if(aux in sp_file2_nospace and sentence != ' '):
+                if(aux in sp_file2_nospace and sentence != ''):
                         print(str(index) + ".", sentence)
                         index += 1
         print("-------------------------------------------------------------------------------------------------------------------------------------------\n")
-        print("Propozitii comune(caz2)\n")
+        print("Propozitii comune(caz 2):\n")
         index = 1
         for sentence in sp_file1:
                 aux = eliminate_punctuation(sentence).upper()
-                if (aux in sp_file2_nopunctuation and sentence != ' '):
+                if (aux in sp_file2_nopunctuation and sentence != ''):
                         print(str(index) + ".", sentence)
                         index += 1
         f1.close()
@@ -59,5 +60,4 @@ def commonPhrases():
 
 
 if __name__ == '__main__':
-
-     commonPhrases()
+        commonPhrases()
